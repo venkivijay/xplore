@@ -6,11 +6,12 @@
       <!-- Search Bar -->
       <div class="relative">
         <input
+          ref="search"
           v-model="searchTerm"
           aria-label="Search"
-          aria-controls="icons"
+          aria-controls="cards"
           type="search"
-          :placeholder="`Search`"
+          placeholder="Search (Press / to focus)"
           class="w-full py-6 pl-16 border rounded appearance-none bg-theme-primary border-theme-secondary focus:outline-none focus:border-mermaid"
         />
         <div
@@ -42,10 +43,10 @@
       <!-- Filter and Sort Bar -->
       <div
         v-if="isHomePage"
-        class="flex flex-wrap items-center justify-between px-5 py-4 rounded bg-theme-secondary text-theme-primary"
+        class="flex flex-col sm:flex-row items-center justify-center sm:justify-between px-5 py-4 rounded bg-theme-secondary text-theme-primary"
       >
-        <div class="flex mr-auto space-x-3">
-          <!-- Filter Options -->
+        <!-- Filter Options -->
+        <div aria-label="Filter" class="flex sm:mr-auto space-x-3">
           <button
             :class="
               filter === 'All' ? 'text-theme-ternary' : 'text-theme-disabled'
@@ -82,7 +83,7 @@
           </button>
         </div>
         <!-- Sort Options -->
-        <div class="flex ml-auto space-x-3">
+        <div aria-label="Sort" class="flex sm:ml-auto space-x-3">
           <!-- Name Sort -->
           <button
             class="flex justify-center items-center m-1 font-medium py-1 px-2 rounded-full"
@@ -217,6 +218,7 @@
       </div>
     </section>
     <transition-group
+      id="cards"
       name="shuffle"
       tag="section"
       class="flex flex-wrap justify-center"
@@ -278,6 +280,12 @@ export default {
       handler: 'handleCardEndPoint',
       immediate: true,
     },
+  },
+  mounted() {
+    window.addEventListener('keydown', this.handleInputFocus);
+  },
+  destroyed() {
+    window.removeEventListener('keydown', this.handleInputFocus);
   },
   methods: {
     // Keeps the Name sort order among 0(no sort),1(ascend),2(desend)
@@ -362,7 +370,7 @@ export default {
     },
     // clears all sort options
     resetSortOrder() {
-      if (this.nameSortOrder !== 0 && this.dateSortOrder !== 0) {
+      if (this.nameSortOrder !== 0 || this.dateSortOrder !== 0) {
         this.nameSortOrder = 0;
         this.dateSortOrder = 0;
       }
@@ -402,28 +410,33 @@ export default {
         this.searchQA();
       }
     },
+    handleInputFocus(e) {
+      if (e.key === '/' || e.code === 'Slash') {
+        e.preventDefault();
+        this.$refs.search.focus();
+      }
+    },
   },
 };
 </script>
 
 <style lang="postcss">
-@keyframes "shake" {
-  10%,
-  90% {
-    transform: translate3d(-1px, 0, 0);
+@keyframes "bounceOut" {
+  0% {
+    opacity: 1;
+    transform: scaleX(1) scaleY(1);
   }
-  20%,
-  80% {
-    transform: translate3d(2px, 0, 0);
+  25% {
+    opacity: 1;
+    transform: scaleX(0.95) scaleY(0.95);
   }
-  30%,
-  50%,
-  70% {
-    transform: translate3d(-4px, 0, 0);
+  50% {
+    opacity: 1;
+    transform: scaleX(1.1) scaleY(1.1);
   }
-  40%,
-  60% {
-    transform: translate3d(4px, 0, 0);
+  100% {
+    opacity: 0;
+    transform: scaleX(0.3) scaleY(0.3);
   }
 }
 input[type='range'] {
@@ -498,20 +511,13 @@ input[type='range'] {
 .shuffle-move {
   transition: transform 0.5s;
 }
-.shuffle {
-  transition: all 0.5s;
-}
+.shuffle,
 .shuffle-leave-active {
   transition: all 0.5s;
 }
-.shuffle-enter {
-  animation: shake 0.7s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
-  transform: translate3d(0, 0, 0);
-  backface-visibility: hidden;
-  perspective: 1000px;
-}
+.shuffle-enter,
 .shuffle-leave-to {
-  animation: shake 0.7s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  animation: bounceOut 0.7s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
   transform: translate3d(0, 0, 0);
   backface-visibility: hidden;
   perspective: 1000px;

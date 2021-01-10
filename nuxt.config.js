@@ -30,6 +30,7 @@ export default {
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
     '@nuxtjs/stylelint-module',
+    '@nuxtjs/google-analytics',
   ],
 
   // Modules (https://go.nuxtjs.dev/config-modules)
@@ -41,4 +42,42 @@ export default {
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {},
+
+  // Google Analytics
+  googleAnalytics: {
+    id: process.env.GOOGLE_ANALYTICS_ID,
+  },
+
+  // PWA
+  pwa: {
+    meta: {
+      name: 'Xplore',
+      author: 'Venki Vijay',
+      description: 'TCS Xplore Java Solutions',
+      theme_color: '#000',
+      lang: 'en',
+      ogType: 'website',
+      ogSiteName: 'Xplore',
+      ogTitle: 'Java Xplore Question and Solutions',
+      ogDescription: 'One stop to prepare for TCS Xplore Assessment',
+      ogHost: 'https://xplore.venkivijay.com',
+    },
+    manifest: {
+      name: 'Xplore Solutions',
+      short_name: 'Xplore',
+      description: 'One stop to prepare for TCS Xplore Assessment',
+      lang: 'en',
+      display: 'standalone',
+    },
+    workbox: {
+      offlineAnalytics: true,
+      // runtimeCaching: [
+      //   {
+      //     urlPattern: 'https://cdn.buymeacoffee.com/buttons/v2/default-red.png',
+      //     method: 'GET',
+      //     strategyOptions: { cacheableResponse: { statuses: [0, 200] } },
+      //   },
+      // ],
+    },
+  },
 };

@@ -1,6 +1,7 @@
 export const state = () => ({
   theme: 'theme-light',
   likes: [],
+  cookies: false,
 });
 
 export const getters = {
@@ -33,6 +34,9 @@ export const mutations = {
     state.theme === 'theme-light'
       ? (state.theme = 'theme-dark')
       : (state.theme = 'theme-light');
+  },
+  toggleCookies(state) {
+    state.cookies === false ? (state.cookies = true) : (state.cookies = false);
   },
   handleLike(state, item) {
     // unlike if already exists in likes array

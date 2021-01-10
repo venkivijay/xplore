@@ -64,18 +64,37 @@
         <nav>
           <ul class="flex items-center justify-center">
             <li class="m-1">
-              <a href="https://www.buymeacoffee.com/venkivijay" target="_blank"
+              <a
+                href="https://www.buymeacoffee.com/venkivijay"
+                rel="preconnect noopener noreferrer"
+                target="_blank"
+                aria-label="Buy Me a Coffee"
                 ><img
-                  src="https://cdn.buymeacoffee.com/buttons/v2/default-red.png"
-                  alt="Buy Me A Coffee"
-                  style="height: 55px !important; width: 217px !important"
-              /></a>
+                  class="w-56 h-16 bg-mermaid p-3 rounded-xl shadow"
+                  src="../assets/bmc.svg"
+                  alt="Buy me a Coffee"
+                />
+              </a>
             </li>
           </ul>
         </nav>
       </section>
     </header>
     <Nuxt class="flex-grow" />
+    <section
+      v-if="!isCookiesAcceped"
+      class="flex fixed bottom-0 left-0 right-0 sw-full items-center p-4 bg-theme-secondary text-theme-primary justify-around"
+    >
+      <p class="text-sm">
+        This website uses cookies and localStorage to best serve the need.
+      </p>
+      <button
+        class="bg-theme-primary text-theme-secondary p-1 rounded-md text-sm whitespace-no-wrap leading-none"
+        @click="toggleCookies"
+      >
+        Got it!
+      </button>
+    </section>
     <footer class="flex items-center justify-center py-4 -space-y-1 text-xs">
       <div>Developed by Venki Vijay</div>
       <img class="w-8 h-8" src="../assets/fire.webp" alt="Fire Emoji" />
@@ -91,6 +110,9 @@ export default {
     theme() {
       return this.$store.state.theme;
     },
+    isCookiesAcceped() {
+      return this.$store.state.cookies;
+    },
   },
   created() {
     // populate store from localStorage
@@ -98,7 +120,7 @@ export default {
   },
 
   methods: {
-    ...mapMutations(['toggleTheme']),
+    ...mapMutations(['toggleTheme', 'toggleCookies']),
   },
 };
 </script>

@@ -12,9 +12,8 @@
           target="_blank"
           rel="noopener noreferrer"
           :href="getQuestion"
+          >Question</a
         >
-          Question
-        </a>
       </div>
       <div>
         <a
@@ -22,9 +21,8 @@
           target="_blank"
           rel="noopener noreferrer"
           :href="getSolution"
+          >Solution</a
         >
-          Solution
-        </a>
       </div>
     </div>
     <!-- Section 3 of card (Details and Like/Share) -->
@@ -49,7 +47,7 @@
               : 'border-mermaid'
           "
         >
-          {{ item.examDate }}
+          {{ getDate }}
         </p>
         <p
           class="border rounded-full m-1 px-2 py-1 text-xs"
@@ -66,6 +64,7 @@
       <div class="leading-none flex">
         <!-- Like Button -->
         <button
+          aria-label="Like"
           :title="isLiked ? 'Unlike' : 'Like'"
           class="pr-1"
           @click="handleLike(item.slug)"
@@ -80,8 +79,8 @@
           >
             <defs>
               <linearGradient
-                id="b"
-                xlink:href="#a"
+                :id="`${item.id}b`"
+                :xlink:href="`#${item.id}a`"
                 x1="-137.5"
                 y1="1045.239"
                 x2="-125.5"
@@ -89,14 +88,14 @@
                 gradientUnits="userSpaceOnUse"
                 gradientTransform="translate(139.5 -.305)"
               />
-              <linearGradient id="a">
+              <linearGradient :id="`${item.id}a`">
                 <stop offset="0" stop-color="#fc6a28" />
                 <stop offset="1" stop-color="#f94045" />
               </linearGradient>
             </defs>
             <path
               d="M5.816 1039.506c-.977 0-1.953.373-2.702 1.121a3.801 3.801 0 00-.294 5.048c.962 1.19 3.603 3.55 4.696 4.512.266.234.7.233.965 0 1.075-.953 3.653-3.274 4.698-4.51a3.8 3.8 0 00-.292-5.047 3.806 3.806 0 00-4.888-.423 3.797 3.797 0 00-2.183-.699z"
-              fill="url(#b)"
+              :fill="`url(#${item.id}b)`"
               fill-rule="evenodd"
               transform="translate(0 -1036.362)"
             />
@@ -118,6 +117,7 @@
         </button>
         <!-- Share or Copy Card Link Button -->
         <button
+          :aria-label="webShareAPISupported ? 'Share' : 'Copy'"
           :title="webShareAPISupported ? 'Share this card' : 'Copy card link'"
           @click="handleCardShare"
         >
@@ -193,6 +193,16 @@ export default {
     },
     getSolution() {
       return `${this.rootURL}${this.item.slug}/Solution.java`;
+    },
+    getDate() {
+      const [month, date, year] = new Date(this.item.examDate)
+        .toLocaleString('default', {
+          day: 'numeric',
+          month: 'short',
+          year: 'numeric',
+        })
+        .split(' ');
+      return `${date.replace(/,/g, '')} ${month} ${year.slice(2)}`;
     },
   },
   methods: {
