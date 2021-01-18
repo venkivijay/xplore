@@ -6,12 +6,13 @@
       <!-- Search Bar -->
       <div class="relative">
         <input
+          id="search"
           ref="search"
           v-model="searchTerm"
           aria-label="Search"
           aria-controls="cards"
           type="search"
-          placeholder="Search (Press / to focus)"
+          placeholder="Search (Hit / to focus)"
           class="w-full py-6 pl-16 border rounded appearance-none bg-theme-primary border-theme-secondary focus:outline-none focus:border-mermaid"
         />
         <div
@@ -98,22 +99,7 @@
             <div class="flex flex-auto pl-1">
               <svg
                 v-if="nameSortOrder == 1"
-                class="w-4 h-4 fill-current"
-                :class="true ? 'text-theme-ternary' : 'text-theme-disabled'"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 48 48"
-              >
-                <path
-                  d="M23.994 2L11.278 14.754l.061 7.693 9.95-9.959V42.44c0 1.972 1.21 3.56 2.714 3.56s2.713-1.59 2.714-3.56V12.39l10.005 10.07-.014-7.693C32.472 10.51 28.223 6.26 23.994 2z"
-                  stroke="#000"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-              <svg
-                v-else-if="nameSortOrder == 2"
-                class="w-4 h-4 fill-current"
-                :class="true ? 'text-theme-ternary' : 'text-theme-disabled'"
+                class="w-4 h-4 fill-current text-theme-ternary"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 48 48"
               >
@@ -128,11 +114,21 @@
                 />
               </svg>
               <svg
+                v-else-if="nameSortOrder == 2"
+                class="w-4 h-4 fill-current text-theme-ternary"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 48 48"
+              >
+                <path
+                  d="M23.994 2L11.278 14.754l.061 7.693 9.95-9.959V42.44c0 1.972 1.21 3.56 2.714 3.56s2.713-1.59 2.714-3.56V12.39l10.005 10.07-.014-7.693C32.472 10.51 28.223 6.26 23.994 2z"
+                  stroke="#000"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              <svg
                 v-else
-                class="w-4 h-4 fill-current"
-                :class="
-                  nameSortOrder ? 'text-theme-ternary' : 'text-theme-disabled'
-                "
+                class="w-4 h-4 fill-current text-theme-disabled"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 48 48"
               >
@@ -161,26 +157,7 @@
             <div class="flex flex-auto pl-1">
               <svg
                 v-if="dateSortOrder == 1"
-                class="w-4 h-4 fill-current"
-                :class="
-                  dateSortOrder ? 'text-theme-ternary' : 'text-theme-disabled'
-                "
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 48 48"
-              >
-                <path
-                  d="M23.994 2L11.278 14.754l.061 7.693 9.95-9.959V42.44c0 1.972 1.21 3.56 2.714 3.56s2.713-1.59 2.714-3.56V12.39l10.005 10.07-.014-7.693C32.472 10.51 28.223 6.26 23.994 2z"
-                  stroke="#000"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-              <svg
-                v-else-if="dateSortOrder == 2"
-                class="w-4 h-4 fill-current"
-                :class="
-                  dateSortOrder ? 'text-theme-ternary' : 'text-theme-disabled'
-                "
+                class="w-4 h-4 fill-current text-theme-ternary"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 48 48"
               >
@@ -195,11 +172,21 @@
                 />
               </svg>
               <svg
+                v-else-if="dateSortOrder == 2"
+                class="w-4 h-4 fill-current text-theme-ternary"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 48 48"
+              >
+                <path
+                  d="M23.994 2L11.278 14.754l.061 7.693 9.95-9.959V42.44c0 1.972 1.21 3.56 2.714 3.56s2.713-1.59 2.714-3.56V12.39l10.005 10.07-.014-7.693C32.472 10.51 28.223 6.26 23.994 2z"
+                  stroke="#000"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              <svg
                 v-else
-                class="w-4 h-4 fill-current"
-                :class="
-                  dateSortOrder ? 'text-theme-ternary' : 'text-theme-disabled'
-                "
+                class="w-4 h-4 fill-current text-theme-disabled"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 48 48"
               >
@@ -218,6 +205,7 @@
       </div>
     </section>
     <transition-group
+      v-if="manipulatedQA.length"
       id="cards"
       name="shuffle"
       tag="section"
@@ -232,16 +220,18 @@
         style="flex-basis: 300px"
       />
     </transition-group>
+    <NoResult v-else />
   </main>
 </template>
 
 <script>
 import Card from '@/components/Card';
+import NoResult from '@/components/NoResult';
 import StaticData from '@/mixins/links.mixin';
 
 export default {
   name: 'Index',
-  components: { Card },
+  components: { Card, NoResult },
   mixins: [StaticData],
   data() {
     return {
@@ -274,6 +264,7 @@ export default {
         immediate: true,
       },
       'resetSortOrder',
+      'clearSearch',
     ],
     searchTerm: { handler: 'searchQA' },
     '$route.query.card': {
@@ -405,6 +396,11 @@ export default {
         }
       }
     },
+    clearSearch() {
+      if (this.searchTerm !== '') {
+        this.searchTerm = '';
+      }
+    },
     handleCardEndPoint(value) {
       if (value) {
         this.searchQA();
@@ -507,6 +503,11 @@ input[type='range'] {
       background: var(--primary);
     }
   }
+}
+#search::-webkit-search-cancel-button {
+  position: relative;
+  right: 20px;
+  transform: scale(1.1);
 }
 .shuffle-move {
   transition: transform 0.5s;

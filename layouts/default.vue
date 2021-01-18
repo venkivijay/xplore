@@ -4,10 +4,23 @@
     :class="theme"
   >
     <header
-      class="flex flex-col w-full max-w-screen-xl pt-5 mx-auto space-y-10 sm:space-y-20"
+      class="flex flex-col w-full max-w-screen-xl mx-auto space-y-10 sm:space-y-20"
     >
       <nav class="flex items-center justify-between">
-        <nuxt-link aria-label="home" to="/">Xplore</nuxt-link>
+        <nuxt-link aria-label="home" to="/">
+          <img
+            v-if="theme === 'theme-light'"
+            class="w-24"
+            src="@/assets/xplor-logo-b.svg"
+            alt="Xplore Logo"
+          />
+          <img
+            v-else
+            class="w-24"
+            src="@/assets/xplor-logo-w.svg"
+            alt="Xplore Logo"
+          />
+        </nuxt-link>
         <ul class="flex items-center justify-center">
           <li class="m-2">
             <a
@@ -60,17 +73,28 @@
         </ul>
       </nav>
       <section class="flex flex-col items-center justify-center space-y-8">
-        Xplore Solutions Topnotch
+        <img
+          v-if="theme === 'theme-light'"
+          class="cw-24rem"
+          src="@/assets/hero-b.svg"
+          alt="Xplore Java Solutions"
+        />
+        <img
+          v-else
+          class="cw-24rem"
+          src="@/assets/hero-w.svg"
+          alt="Xplore Java Solutions"
+        />
         <nav>
           <ul class="flex items-center justify-center">
-            <li class="m-1">
+            <li>
               <a
                 href="https://www.buymeacoffee.com/venkivijay"
                 rel="preconnect noopener noreferrer"
                 target="_blank"
                 aria-label="Buy Me a Coffee"
                 ><img
-                  class="w-56 h-16 bg-mermaid p-3 rounded-xl shadow"
+                  class="h-16 bg-mermaid p-3 rounded-xl shadow"
                   src="../assets/bmc.svg"
                   alt="Buy me a Coffee"
                 />
@@ -83,13 +107,11 @@
     <Nuxt class="flex-grow" />
     <section
       v-if="!isCookiesAcceped"
-      class="flex fixed bottom-0 left-0 right-0 sw-full items-center p-4 bg-theme-secondary text-theme-primary justify-around"
+      class="flex fixed bottom-0 left-0 right-0 sw-full items-center p-4 bg-theme-secondary text-theme-primary justify-center"
     >
-      <p class="text-sm">
-        This website uses cookies and localStorage to best serve the need.
-      </p>
+      <p class="text-sm">By using our site you agree to our use of cookies.</p>
       <button
-        class="bg-theme-primary text-theme-secondary p-1 rounded-md text-sm whitespace-no-wrap leading-none"
+        class="bg-theme-primary text-theme-secondary p-1 rounded-md text-sm whitespace-no-wrap leading-none ml-4"
         @click="toggleCookies"
       >
         Got it!
@@ -130,5 +152,8 @@ body {
   font-family: 'Fira Code', Menlo, Monaco, Consolas, 'Liberation Mono',
     'Courier New', monospace;
   overflow-y: scroll;
+}
+.cw-24rem {
+  width: 24rem;
 }
 </style>
