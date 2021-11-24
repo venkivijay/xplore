@@ -11,21 +11,17 @@ export default {
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
   css: [],
-  plugins: ['~/plugins/fuse.js'],
+  plugins: ['~/plugins/fuse.js', '~/plugins/analytics.js'],
   components: true,
   buildModules: [
     '@nuxtjs/eslint-module',
     '@nuxtjs/tailwindcss',
     '@nuxtjs/stylelint-module',
-    '@nuxtjs/google-analytics',
   ],
   modules: ['@nuxtjs/pwa', '@nuxtjs/toast'],
   build: {},
   generate: {
     fallback: true,
-  },
-  googleAnalytics: {
-    id: process.env.GOOGLE_ANALYTICS_ID,
   },
   pwa: {
     meta: {
