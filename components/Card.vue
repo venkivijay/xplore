@@ -195,7 +195,7 @@ export default {
       return `${this.rootURL}${this.item.slug}/Solution.java`;
     },
     getDate() {
-      const [month, date, year] = new Date(this.item.examDate)
+      const [date, month, year] = new Date(this.item.examDate)
         .toLocaleString('default', {
           day: 'numeric',
           month: 'short',

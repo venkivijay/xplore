@@ -5,7 +5,7 @@ export default {
         {
           slug: 'Perfect_Square',
           solutionCount: 1,
-          examDate: '2019.12.17',
+          examDate: '2019-12-17',
           tag: [],
           id: 1,
           questionNature: 'Easy',
@@ -14,7 +14,7 @@ export default {
         {
           slug: 'Associate_For_Given_Technology',
           solutionCount: 1,
-          examDate: '2019.12.17',
+          examDate: '2019-12-17',
           tag: [],
           id: 2,
           questionNature: 'Hard',
@@ -23,7 +23,7 @@ export default {
         {
           slug: 'Space_Character_Count',
           solutionCount: 1,
-          examDate: '2019.12.28',
+          examDate: '2019-12-28',
           tag: [],
           id: 3,
           questionNature: 'Easy',
@@ -32,7 +32,7 @@ export default {
         {
           slug: 'Movie_Get_Movie_By_Genre',
           solutionCount: 1,
-          examDate: '2019.12.28',
+          examDate: '2019-12-28',
           tag: [],
           id: 4,
           questionNature: 'Hard',
@@ -41,7 +41,7 @@ export default {
         {
           slug: 'Character_At_Odd_Position',
           solutionCount: 1,
-          examDate: '2020.01.15',
+          examDate: '2020-01-15',
           tag: [],
           id: 5,
           questionNature: 'Easy',
@@ -50,7 +50,7 @@ export default {
         {
           slug: 'Sim_Match_And_Sort',
           solutionCount: 1,
-          examDate: '2020.01.15',
+          examDate: '2020-01-15',
           tag: [],
           id: 6,
           questionNature: 'Hard',
@@ -59,7 +59,7 @@ export default {
         {
           slug: 'Last_Character_In_Every_Word',
           solutionCount: 1,
-          examDate: '2020.01.25',
+          examDate: '2020-01-25',
           tag: [],
           id: 7,
           questionNature: 'Easy',
@@ -68,7 +68,7 @@ export default {
         {
           slug: 'Inventory_Replenish',
           solutionCount: 1,
-          examDate: '2020.01.25',
+          examDate: '2020-01-25',
           tag: [],
           id: 8,
           questionNature: 'Hard',
@@ -77,7 +77,7 @@ export default {
         {
           slug: 'Vowels_Consonants_Count',
           solutionCount: 1,
-          examDate: '2020.02.10',
+          examDate: '2020-02-10',
           tag: [],
           id: 9,
           questionNature: 'Easy',
@@ -86,7 +86,7 @@ export default {
         {
           slug: 'Player_Get_Average_of_Runs',
           solutionCount: 1,
-          examDate: '2020.02.10',
+          examDate: '2020-02-10',
           tag: [],
           id: 10,
           questionNature: 'Hard',
@@ -95,7 +95,7 @@ export default {
         {
           slug: 'Smallest_Vowel_in_a_String',
           solutionCount: 1,
-          examDate: '2020.02.13',
+          examDate: '2020-02-13',
           tag: [],
           id: 11,
           questionNature: 'Easy',
@@ -104,7 +104,7 @@ export default {
         {
           slug: 'Reverse_Number',
           solutionCount: 2,
-          examDate: '2020.03.02',
+          examDate: '2020-03-02',
           tag: [],
           id: 12,
           questionNature: 'Easy',
@@ -113,7 +113,7 @@ export default {
         {
           slug: 'Medicine_Get_Price_by_Disease',
           solutionCount: 1,
-          examDate: '2020.03.02',
+          examDate: '2020-03-02',
           tag: [],
           id: 13,
           questionNature: 'Hard',
@@ -122,7 +122,7 @@ export default {
         {
           slug: 'Reverse_String',
           solutionCount: 2,
-          examDate: '2020.04.02',
+          examDate: '2020-04-02',
           tag: [],
           id: 14,
           questionNature: 'Easy',
@@ -131,7 +131,7 @@ export default {
         {
           slug: 'Unique_Characters',
           solutionCount: 1,
-          examDate: '2020.04.02',
+          examDate: '2020-04-02',
           tag: [],
           id: 15,
           questionNature: 'Easy',
@@ -140,7 +140,7 @@ export default {
         {
           slug: 'Device_Management',
           solutionCount: 1,
-          examDate: '2020.04.02',
+          examDate: '2020-04-02',
           tag: [],
           id: 16,
           questionNature: 'Hard',
@@ -149,7 +149,7 @@ export default {
         {
           slug: 'Data_Transmission',
           solutionCount: 1,
-          examDate: '2020.04.02',
+          examDate: '2020-04-02',
           tag: [],
           id: 17,
           questionNature: 'Hard',
@@ -158,7 +158,7 @@ export default {
         {
           slug: 'Institution',
           solutionCount: 1,
-          examDate: '2020.04.17',
+          examDate: '2020-04-17',
           tag: [],
           id: 18,
           questionNature: 'Hard',
@@ -167,7 +167,7 @@ export default {
         {
           slug: 'Player_Get_Player_Based_On_Level',
           solutionCount: 1,
-          examDate: '2020.05.08',
+          examDate: '2020-05-08',
           tag: [],
           id: 19,
           questionNature: 'Hard',
@@ -176,7 +176,7 @@ export default {
         {
           slug: 'Movie_Find_Avg_Budget_By_Director',
           solutionCount: 1,
-          examDate: '2020.06.05',
+          examDate: '2020-06-05',
           tag: [],
           id: 20,
           questionNature: 'Hard',
@@ -185,7 +185,7 @@ export default {
         {
           slug: 'AutonomousCar',
           solutionCount: 1,
-          examDate: '2020.06.19',
+          examDate: '2020-06-19',
           tag: [],
           id: 21,
           questionNature: 'Hard',
@@ -194,7 +194,7 @@ export default {
         {
           slug: 'NavalVessel',
           solutionCount: 1,
-          examDate: '2020.07.03',
+          examDate: '2020-07-03',
           tag: [],
           id: 22,
           questionNature: 'Hard',
@@ -203,7 +203,7 @@ export default {
         {
           slug: 'Travel_Agencies',
           solutionCount: 1,
-          examDate: '2020.07.17',
+          examDate: '2020-07-17',
           tag: [],
           id: 23,
           questionNature: 'Hard',
