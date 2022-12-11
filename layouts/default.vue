@@ -118,7 +118,7 @@
       </button>
     </section>
     <footer class="flex items-center justify-center py-4 -space-y-1 text-xs">
-      <div>Developed by Venki Vijay</div>
+      <a href="https://venkivijay.com/#home"><div>Developed by Venki Vijay</div></a>
       <img class="w-8 h-8" src="../assets/fire.webp" alt="Fire Emoji" />
     </footer>
   </div>
